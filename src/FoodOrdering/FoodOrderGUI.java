@@ -1,6 +1,7 @@
 package FoodOrdering;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class FoodOrderGUI extends JFrame {
     private JPanel panel1;
@@ -21,44 +22,50 @@ public class FoodOrderGUI extends JFrame {
     }
 
     public void totalAmount() {
-        double amount = 0.00;
+        try {
+            double amount = 0.00;
 
-        if (cPizza.isSelected()) {
-            amount+= 100;
-        }
-        if (cBurger.isSelected()) {
-            amount+= 80.00;
-        }
-        if (cFries.isSelected()) {
-            amount+= 65.00;
-        }
-        if (cSoftDrinks.isSelected()) {
-            amount+= 55.00;
-        }
-        if (cTea.isSelected()) {
-            amount+= 50.00;
-        }
-        if (cSundae.isSelected()) {
-            amount+= 40.00;
-        }
+            if (cPizza.isSelected()) {
+                amount += 100;
+            }
+            if (cBurger.isSelected()) {
+                amount += 80.00;
+            }
+            if (cFries.isSelected()) {
+                amount += 65.00;
+            }
+            if (cSoftDrinks.isSelected()) {
+                amount += 55.00;
+            }
+            if (cTea.isSelected()) {
+                amount += 50.00;
+            }
+            if (cSundae.isSelected()) {
+                amount += 40.00;
+            }
 
-        if (rb5.isSelected()) {
-            double discount = amount * 0.05;
-            amount-= discount;
-            JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
-        }
-        if (rb10.isSelected()) {
-            double discount = amount * 0.10;
-            amount-= discount;
-            JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
-        }
-        if (rb15.isSelected()) {
-            double discount = amount * 0.15;
-            amount-= discount;
-            JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
-        }
-        if (rbNone.isSelected()) {
-            JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
+            if (rb5.isSelected()) {
+                double discount = amount * 0.05;
+                amount -= discount;
+                JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
+            }
+            if (rb10.isSelected()) {
+                double discount = amount * 0.10;
+                amount -= discount;
+                JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
+            }
+            if (rb15.isSelected()) {
+                double discount = amount * 0.15;
+                amount -= discount;
+                JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
+            }
+            if (rbNone.isSelected()) {
+                JOptionPane.showMessageDialog(panel1, String.format("The total price is Php %.2f", amount));
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(panel1, "Check Your Computer");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(panel1, "Check Your Computer");
         }
     }
 
