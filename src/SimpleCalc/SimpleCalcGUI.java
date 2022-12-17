@@ -34,21 +34,31 @@ public class SimpleCalcGUI extends JFrame{
     }
 
     public void calculate() {
-        double num_1 = Double.parseDouble(tfNumber1.getText());
-        double num_2 = Double.parseDouble(tfNumber2.getText());
+        try {
+            double num_1 = Double.parseDouble(tfNumber1.getText());
+            double num_2 = Double.parseDouble(tfNumber2.getText());
 
-        if(cbOperations.getSelectedItem().equals("+")) {
-             double Result = num_1 + num_2;
-             tfResult.setText(String.valueOf((int)Result));
-        } else if (cbOperations.getSelectedItem().equals("-")) {
-            double Result = num_1 - num_2;
-            tfResult.setText(String.valueOf((int)Result));
-        } else if (cbOperations.getSelectedItem().equals("*")) {
-            double Result = num_1 * num_2;
-            tfResult.setText(String.valueOf((int)Result));
-        } else if (cbOperations.getSelectedItem().equals("/")) {
-            double Result = num_1 / num_2;
-            tfResult.setText(String.valueOf((int)Result));
+            if (cbOperations.getSelectedItem().equals("+")) {
+                double Result = num_1 + num_2;
+                tfResult.setText(String.valueOf((int) Result));
+            } else if (cbOperations.getSelectedItem().equals("-")) {
+                double Result = num_1 - num_2;
+                tfResult.setText(String.valueOf((int) Result));
+            } else if (cbOperations.getSelectedItem().equals("*")) {
+                double Result = num_1 * num_2;
+                tfResult.setText(String.valueOf((int) Result));
+            } else if (cbOperations.getSelectedItem().equals("/")) {
+                if (num_2 == 0) {
+                    throw (new ArithmeticException());
+                }
+                double Result = num_1 / num_2;
+                tfResult.setText(String.valueOf((int) Result));
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(panel1, "Invalid Input");
+        } catch (ArithmeticException e) {
+            tfResult.setText("");
+            JOptionPane.showMessageDialog(panel1, "Number can't divide with 0");
         }
     }
     public static void main(String[] args) {
